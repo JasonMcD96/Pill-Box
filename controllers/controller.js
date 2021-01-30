@@ -9,6 +9,11 @@ var db = require("../models");
 // ===================================================================
 module.exports = function(app) {
     
+    // Initial log in route
+    app.get("/", function(req, res) {
+        res.render("index");
+    });
+    
     // GET route for getting all patients
     app.get("/api/patients", function(req, res) {
         db.Patient.findAll().then(function(dbPatients) {
