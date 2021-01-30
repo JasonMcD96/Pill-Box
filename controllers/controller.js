@@ -14,10 +14,15 @@ module.exports = function(app) {
         res.render("index");
     });
     
+    // GET route for create user page
+    app.get("/createuser", function(req, res) {
+        res.render("createUser");
+    });
+    
     // GET route for getting all patients
     app.get("/api/patients", function(req, res) {
         db.Patient.findAll().then(function(dbPatients) {
-            res.render("index", dbPatients);
+            res.render("", dbPatients);
         });
     });
 
