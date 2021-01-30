@@ -18,7 +18,7 @@ module.exports = function(app) {
     app.get("/createuser", function(req, res) {
         res.render("createUser");
     });
-    
+
     // GET route for getting all patients
     app.get("/api/patients", function(req, res) {
         db.Patient.findAll().then(function(dbPatients) {
@@ -27,9 +27,9 @@ module.exports = function(app) {
     });
 
     // POST route for saving a new patient
-    app.post("/api/patients", function(req, res) {
-        db.Patient.create(req.body).then(function(dbPatient) {
-            res.json(dbPatient);
-        });
-    });
+    // app.post("/api/patients", function(req, res) {
+    //     db.Patient.create(req.body).then(function(dbPatient) {
+    //         res.json(dbPatient);
+    //     });
+    // });
 };
