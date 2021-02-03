@@ -2,5 +2,13 @@
 <div class="container">
     <div class="jumbotron">
         <h2>Dashboard</h2>
+        {{!-- ul of patients --}}
+        <ul id="patientList">
+            {{!-- for each item in patient --}}
+            {{#each patient}}
+            {{!-- display their information --}}
+            {{> patientBlock}}
+            {{/each}}
+        </ul>
     </div>
 </div>
