@@ -1,7 +1,16 @@
+#signUpButton {
+    float: right;
+    background-color: aqua;
+}
+
 .titleContainer {
     text-align: center;
 }
 
 .mainTitle {
+    text-align: center;
+}
 
+.jumbotron h2 {
+    text-align: center;
 }
