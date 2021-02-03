@@ -30,9 +30,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Import routes and give the server access to them
-require("./controllers/controller")(app);
-
-
+require("./controllers/html-routes")(app);
+require("./controllers/api-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
