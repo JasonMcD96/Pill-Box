@@ -7,27 +7,31 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var session = require("express-session");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
+// Requiring passport as configured
+var passport = require("./config/passport");
+
+// Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
-
-// Requiring our models for syncing
 var db = require("./models");
 
-// Sets up the Express app to handle data parsing
+// Creating express app and configuring middleware needed for authentication
+var app = express();
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
+app.use(express.static("public"));
+
+// Use sessions to keep track of user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Set Handlebars
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-// Static directory
-app.use(express.static("public"));
 
 // Import routes and give the server access to them
 require("./controllers/html-routes")(app);
