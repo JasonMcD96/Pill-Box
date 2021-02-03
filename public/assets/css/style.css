@@ -1,6 +1,5 @@
-#signUpButton {
-    float: right;
-    background-color: aqua;
+#signUp {
+    text-decoration: underline;
 }
 
 .titleContainer {
@@ -11,6 +10,14 @@
     text-align: center;
 }
 
+.jumbotron {
+    padding-top: 10px;
+}
+
 .jumbotron h2 {
     text-align: center;
+}
+
+.jumbotron p {
+
 }
