@@ -1,6 +1,17 @@
+const { EventEmitter } = require("events");
+
 $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
+
+    $("addPatient").on("click", function(event){
+        event.preventDefault();
+        console.log("You clicked add patient!")
+
+        // get the new patient's name
+        let newName = $("#patientName").val().trim();
+        console.log("You want to add: ", newName)
+    })
 
     $("#loginSubmit").on("click", function (event) {
         event.preventDefault();
