@@ -69,7 +69,8 @@ module.exports = function (app) {
         } else {
             // Otherwise send back the user's email
             res.json({
-                email: req.user.email
+                email: req.user.email,
+                id: req.user.id
             });
         }
     });
