@@ -1,10 +1,9 @@
-const { EventEmitter } = require("events");
 
 $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
 
-    $("addPatient").on("click", function(event){
+    $("#addPatient").on("click", function(event){
         event.preventDefault();
         console.log("You clicked add patient!")
 
