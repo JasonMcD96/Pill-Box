@@ -41,7 +41,7 @@ module.exports = function (app) {
             res.json(dbPatient);
         });
     });
-    
+
     // GET route for getting all patients
     app.get("/api/patients", function (req, res) {
         db.Patient.findAll().then(function (dbPatients) {
@@ -54,9 +54,16 @@ module.exports = function (app) {
         db.Patient.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [db.Meds]
         }).then(function (dbPatient) {
             res.json(dbPatient);
+        });
+    });
+
+    app.post("/api/meds", function (req, res) {
+        db.Meds.create(req.body).then(function (dbMeds) {
+            res.json(dbMeds);
         });
     });
 

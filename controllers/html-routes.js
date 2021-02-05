@@ -26,7 +26,7 @@ module.exports = function (app) {
     });
 
     // Add isAuthenticated middleware
-    app.get("/dashboard", isAuthenticated, function(req, res) {
+    app.get("/dashboard", isAuthenticated, function (req, res) {
         res.render("dashboard");
     })
 };
