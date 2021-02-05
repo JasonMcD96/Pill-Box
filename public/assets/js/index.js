@@ -63,4 +63,8 @@ $(document).ready(function () {
         );
     })
 
-})
+    // GET request to get user's email
+    $.get("/api/user_data").then(function(data) {
+        $(".member-name").text(data.email);
+    });
+});
