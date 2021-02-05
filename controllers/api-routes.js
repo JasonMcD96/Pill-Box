@@ -37,7 +37,9 @@ module.exports = function (app) {
 
     // POST route for saving a new patient
     app.post("/api/patient", function (req, res) {
-        db.Patient.create(req.body).then(function (dbPatient) {
+        db.Patient.create({
+            name: req.body.name,
+        }).then(function (dbPatient) {
             res.json(dbPatient);
         });
     });
