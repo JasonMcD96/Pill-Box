@@ -3,7 +3,7 @@ $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
 
-    $("#addPatient").on("click", function(event){
+    $("#addPatient").on("click", function (event) {
         event.preventDefault();
         console.log("You clicked add patient!")
 
@@ -11,10 +11,11 @@ $(document).ready(function () {
         let newName = $("#patientName").val().trim();
         let newPatient = {
             name: newName,
-            caretakerId: $(".member-name").data("id")
+            // changed to UserId instead of caretaker, was not loading in db
+            UserId: $(".member-name").data("id")
         }
 
-        console.log("New Patient Info:", newPatient )
+        console.log("New Patient Info:", newPatient)
         $.ajax("/api/patient", {
             type: "POST",
             data: newPatient
@@ -25,7 +26,7 @@ $(document).ready(function () {
                 location.reload();
             }
         );
-        
+
     })
 
     $("#loginSubmit").on("click", function (event) {
@@ -90,7 +91,7 @@ $(document).ready(function () {
     })
 
     // GET request to get user's email
-    $.get("/api/user_data").then(function(data) {
+    $.get("/api/user_data").then(function (data) {
         $(".member-name").text(data.email);
         $(".member-name").attr('data-id', data.id)
     });

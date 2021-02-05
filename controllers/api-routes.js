@@ -42,12 +42,13 @@ module.exports = function (app) {
         });
     });
 
-    // GET route for getting all patients
-    app.get("/api/patients", function (req, res) {
-        db.Patient.findAll().then(function (dbPatients) {
-            res.render("/dashboard", dbPatients);
-        });
-    });
+    // // GET route for getting all patients (this should be an html route when dashboard loads)
+    // app.get("/api/patients", function (req, res) {
+    //     db.Patient.findAll().then(function (dbPatients) {
+    //         console.log(dbPatients)
+    //         res.render("/dashboard", dbPatients);
+    //     });
+    // });
 
     // GET rout for finding one patient
     app.get("/api/patients/:id", function (req, res) {
@@ -62,7 +63,7 @@ module.exports = function (app) {
     });
 
     // Route for getting data about user to be used on client side
-    app.get("/api/user_data", function(req, res) {
+    app.get("/api/user_data", function (req, res) {
         if (!req.user) {
             // If the user is not logged in send back an empty object
             res.json({});

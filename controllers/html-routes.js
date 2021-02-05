@@ -7,6 +7,8 @@ var isAuthenticated = require("../config/isAuthenticated");
 
 // Routes
 // ===================================================================
+var db = require("../models");
+
 module.exports = function (app) {
 
     // Initial log in route
@@ -27,6 +29,13 @@ module.exports = function (app) {
 
     // Add isAuthenticated middleware
     app.get("/dashboard", isAuthenticated, function (req, res) {
-        res.render("dashboard");
+        db.Patient.findAll().then(function (dbPatients) {
+            console.log(dbPatients)
+            // converting patients to an object for handlebars
+            var patients = { patients: dbPatients }
+            res.render("dashboard", patients);
+        });
     })
+
+
 };

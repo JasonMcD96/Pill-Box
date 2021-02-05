@@ -18,7 +18,7 @@ var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
-app.use(express.urlencoded({ extended : true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -37,10 +37,10 @@ app.set("view engine", "handlebars");
 require("./controllers/html-routes")(app);
 require("./controllers/api-routes")(app);
 
-// Syncing our sequelize models and then starting our Express app
+// Syncing our sequelize models and then starting our Express app (added force: true) to resyncs changes to the model and deletes
 // =============================================================
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
+db.sequelize.sync({ force: false }).then(function () {
+    app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });
 });

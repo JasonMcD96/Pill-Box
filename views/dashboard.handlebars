@@ -61,10 +61,11 @@
                     <input type="text" id="patientName" placeholder="Patient Name">
                 </div>
                 <ul class="list-group list-group-flush patientList">
-                    {{!-- for each item in patient --}}
-                    {{#each patient}}
-                    {{!-- display their information --}}
-                    {{> patientBlock}}
+                    {{!-- for each item in patient. Added an s--}}
+                    {{#each patients}}
+                    {{!-- display their information. Added folder for HB --}}
+                    {{name}}
+                    {{> patients/patientBlock}}
                     {{/each}}
                 </ul>
                 <div class="card-body">
