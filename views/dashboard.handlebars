@@ -1,4 +1,12 @@
 {{!-- This body will dynamically popluate a ul based on how many people the person is caring for --}}
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">
+        <img src="../assets/pill.png" width="30" height="30" class="d-inline-block align-top" alt="red and blue pill">
+        Pill Box
+    </a>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+</nav>
+
 <div class="container">
     <div class="jumbotron">
         <h2>Dashboard</h2>
@@ -10,5 +18,65 @@
             {{> patientBlock}}
             {{/each}}
         </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Welcome: </h5>
+                    <p>User Name Here</p>
+
+                    <p class="text-muted">Last Login Date: </p>
+                    <a href="#" class="card-link">Logout</a>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Today's Date:
+                                </n>
+                                <span id="currentDay"></span>
+                            </h5>
+
+
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <p>Notifications:</p> &nbsp;
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off" checked> ON
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option3" autocomplete="off"> OFF
+                                </label>
+                            </div>
+                            </n>
+                            <p class="text-muted"># Patients to see Today</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Patient List</h5>
+                    <a href="#" class="card-link">Add a Patient</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Betty Boop</li>
+                    <li class="list-group-item">Mickey Mouse</li>
+                    <li class="list-group-item">Donald Duck</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Back to Top</a>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

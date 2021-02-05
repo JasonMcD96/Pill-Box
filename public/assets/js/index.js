@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    var currentDay = $("#currentDay");
+    currentDay.text(moment().format('dddd, LL'));
+
     $("#loginSubmit").on("click", function (event) {
         event.preventDefault();
         console.log('You clicked it!')
