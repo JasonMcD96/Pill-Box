@@ -9,9 +9,12 @@ $(document).ready(function () {
 
         // get the new patient's name
         let newName = $("#patientName").val().trim();
-        console.log("You want to add: ", newName)
-        let newPatient = {name: newName}
+        let newPatient = {
+            name: newName,
+            caretakerId: $(".member-name").data("id")
+        }
 
+        console.log("New Patient Info:", newPatient )
         $.ajax("/api/patient", {
             type: "POST",
             data: newPatient
@@ -89,5 +92,6 @@ $(document).ready(function () {
     // GET request to get user's email
     $.get("/api/user_data").then(function(data) {
         $(".member-name").text(data.email);
+        $(".member-name").attr('data-id', data.id)
     });
 });
