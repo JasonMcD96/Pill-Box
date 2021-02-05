@@ -10,6 +10,19 @@ $(document).ready(function () {
         // get the new patient's name
         let newName = $("#patientName").val().trim();
         console.log("You want to add: ", newName)
+        let newPatient = {name: newName}
+
+        $.ajax("/api/patient", {
+            type: "POST",
+            data: newPatient
+        }).then(
+            function () {
+                console.log("created patient");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+        
     })
 
     $("#loginSubmit").on("click", function (event) {
