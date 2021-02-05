@@ -10,14 +10,6 @@
 <div class="container">
     <div class="jumbotron">
         <h2>Dashboard</h2>
-        {{!-- ul of patients --}}
-        <ul id="patientList">
-            {{!-- for each item in patient --}}
-            {{#each patient}}
-            {{!-- display their information --}}
-            {{> patientBlock}}
-            {{/each}}
-        </ul>
     </div>
 
     <div class="row">
@@ -67,10 +59,15 @@
                     <h5 class="card-title">Patient List</h5>
                     <a href="#" class="card-link">Add a Patient</a>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Betty Boop</li>
+                <ul class="list-group list-group-flush patientList">
+                    {{!-- <li class="list-group-item">Betty Boop</li>
                     <li class="list-group-item">Mickey Mouse</li>
-                    <li class="list-group-item">Donald Duck</li>
+                    <li class="list-group-item">Donald Duck</li> --}}
+                    {{!-- for each item in patient --}}
+                    {{#each patient}}
+                    {{!-- display their information --}}
+                    {{> patientBlock}}
+                    {{/each}}
                 </ul>
                 <div class="card-body">
                     <a href="#" class="card-link">Back to Top</a>
