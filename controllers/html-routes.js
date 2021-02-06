@@ -29,8 +29,8 @@ module.exports = function (app) {
 
     // Add isAuthenticated middleware
     app.get("/dashboard", isAuthenticated, function (req, res) {
-        db.Patient.findAll().then(function (dbPatients) {
-            console.log(dbPatients)
+        db.Patient.findAll({ raw: true }).then(function (dbPatients) {
+
             // converting patients to an object for handlebars
             var patients = { patients: dbPatients }
             res.render("dashboard", patients);
