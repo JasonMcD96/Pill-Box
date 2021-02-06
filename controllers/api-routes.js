@@ -45,18 +45,6 @@ module.exports = function (app) {
         });
     });
 
-    // GET rout for finding one patient
-    // app.get("/api/patients/:id", function (req, res) {
-    //     db.Patient.findOne({
-    //         where: {
-    //             id: req.params.id
-    //         },
-    //         include: [db.Meds]
-    //     }).then(function (dbPatient) {
-    //         res.json(dbPatient);
-    //     });
-    // });
-
     // Route for getting data about user to be used on client side
     app.get("/api/user_data", function (req, res) {
         if (!req.user) {

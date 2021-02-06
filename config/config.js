@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": '#####',
+    "password": '58153027',
     "database": "pillbox_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
