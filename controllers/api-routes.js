@@ -39,6 +39,7 @@ module.exports = function (app) {
     app.post("/api/patient", function (req, res) {
         db.Patient.create({
             name: req.body.name,
+            UserId: req.body.UserId,
         }).then(function (dbPatient) {
             res.json(dbPatient);
         });
