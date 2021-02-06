@@ -22,10 +22,14 @@
     text-align: center;
 }
 
-.jumbotron p {
-
+#welcome {
+    text-decoration: underline;
 }
 
 label, p {
     font-family: 'Raleway', sans-serif;
+}
+
+.login-form {
+    text-align: center;
 }
