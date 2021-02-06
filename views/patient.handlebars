@@ -7,10 +7,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" id="
-                    patient-name"> </h5>
+                    <h5 class="card-title" id="patient-name"> </h5>
                     <p data-id="" class="patient-name"></p>
-
                 </div>
             </div>
         </div>
@@ -22,21 +20,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Medication List</h5>
                     <a href="#" class="card-link" id="addPatient">Add Medication</a>
-                    <input type="text" id="medName" placeholder="Medicine Name">
                 </div>
                 <ul class="list-group list-group-flush medsList">
-                    {{!-- for each item in patient. Added an s--}}
+                    {{!-- for each item in patient --}}
                     {{#each meds}}
-                    {{!-- display their information. Added folder for HB --}}
+                    {{!-- display their information --}}
                     {{> patients/medsBlock}}
                     {{/each}}
                 </ul>
             </div>
-
         </div>
     </div>
     <div class="card-body">
-        <a href="#" class="card-link">Back to Dashboard</a>
+        <a href="/dashboard" class="card-link">Back to Dashboard</a>
         <a href="/logout" class="card-link">Logout</a>
     </div>
 </div>
