@@ -16,6 +16,7 @@
 
 .jumbotron {
     padding-top: 10px;
+    margin-top: 20px;
 }
 
 .jumbotron h2 {
@@ -26,10 +27,23 @@
     text-decoration: underline;
 }
 
+h2 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#titleText {
+    font-size: 32px;
+    font-family: 'Lobster', cursive;
+}
+
 label, p {
     font-family: 'Raleway', sans-serif;
 }
 
+.card {
+    border: 1px solid black;
+}
+
 .login-form {
-    text-align: center;
+    padding-left: 30px;
 }
