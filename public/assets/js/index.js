@@ -44,6 +44,7 @@ $(document).ready(function () {
             return;
         }
 
+
         emailInput.val("");
         passwordInput.val("");
 
@@ -54,6 +55,7 @@ $(document).ready(function () {
             window.location.replace("/dashboard");
             // If there's an error, log the error
         }).catch(function (err) {
+            alert("Click the 'Sign Up' link below to create a Pill Box account.");
             console.log(err);
         });
 
