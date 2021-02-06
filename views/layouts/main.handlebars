@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pill Box</title>
 
-    {{!-- J-Query and Bootstrap--}}
+    {{!-- Google Fonts --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
+    {{!-- J-Query and Bootstrap--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     {{!-- Javascript --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+    <script type="module" src="assets/js/index.js"></script>
 </head>
 
 <body>
@@ -22,13 +26,24 @@
     {{!-- To href with routes you href="/routename" --}}
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">
-            <img  src="../assets/pill.png" width="30" height="30" class="d-inline-block align-top rotate"
+            <img src="../assets/pill.png" width="30" height="30" class="d-inline-block align-top rotate"
                 alt="red and blue pill"> Pill Box
         </a>
     </nav>
 
     {{!-- <h1 class="mainTitle">Pill Box</h1> --}}
     {{{body}}}
+
+    <script>
+        anime({
+            autoplay: true,
+            targets: '.rotate',
+            rotateY: '1turn',
+            duration: 1800,
+            loop: true,
+            easing: 'linear'
+        });
+    </script>
 </body>
 
 </html>
