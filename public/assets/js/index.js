@@ -97,4 +97,13 @@ $(document).ready(function () {
         $(".member-name").text(data.email);
         $(".member-name").attr('data-id', data.id)
     });
+
+    $("#addMedication").on('click', function(event){
+        event.preventDefault();
+        let string = document.URL.split('/')
+        let id = string[string.length-1]
+        console.log('URL PARAMS :',id)
+
+        window.location.href = '/addmedication:'+id
+    })
 });
