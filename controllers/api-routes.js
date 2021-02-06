@@ -45,25 +45,17 @@ module.exports = function (app) {
         });
     });
 
-    // // GET route for getting all patients (this should be an html route when dashboard loads)
-    // app.get("/api/patients", function (req, res) {
-    //     db.Patient.findAll().then(function (dbPatients) {
-    //         console.log(dbPatients)
-    //         res.render("/dashboard", dbPatients);
+    // GET rout for finding one patient
+    // app.get("/api/patients/:id", function (req, res) {
+    //     db.Patient.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         },
+    //         include: [db.Meds]
+    //     }).then(function (dbPatient) {
+    //         res.json(dbPatient);
     //     });
     // });
-
-    // GET rout for finding one patient
-    app.get("/api/patients/:id", function (req, res) {
-        db.Patient.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: [db.Meds]
-        }).then(function (dbPatient) {
-            res.json(dbPatient);
-        });
-    });
 
     // Route for getting data about user to be used on client side
     app.get("/api/user_data", function (req, res) {

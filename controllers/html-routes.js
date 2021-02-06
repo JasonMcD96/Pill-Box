@@ -37,5 +37,17 @@ module.exports = function (app) {
         });
     })
 
-
+    // GET route for patient record
+    app.get("/patientrecord", isAuthenticated, function(req, res) {
+        db.Patient.findOne({
+            raw: true,
+            where: {
+                id: req.body.id
+            },
+            include: [db.Meds]
+        }).then(function (dbPatient) {
+            var meds = { meds: dbPatient }
+            res.render("patient", meds)
+        });
+    });
 };
