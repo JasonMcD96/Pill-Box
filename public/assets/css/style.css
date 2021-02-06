@@ -2,6 +2,10 @@
     text-decoration: underline;
 }
 
+.patientList {
+    padding-left: 25px;
+}
+
 .titleContainer {
     text-align: center;
 }
