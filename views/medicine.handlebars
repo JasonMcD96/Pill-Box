@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="jumbotron">
+        <h2 id="patient-name"></h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Medication Details </h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Medicine Name</label>
+                            <input type="text" class="form-control" id="med_name" placeholder="Enter Medicine Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Dosage:</label>
+                            <input type="text" class="form-control" id="dosage" placeholder="ie. mg, cc, tbsp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Times Per Day:</label>
+                            <select class="form-control" id="timesPD">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="withFood">
+                            <label class="form-check-label" for="defaultCheck1">
+                                With Food
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="taken">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Taken
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Notes:</label>
+                            <textarea class="form-control" id="notes" rows="3"></textarea>
+                        </div>
+                    </form>
+
+                    <div class="card-body">
+                        <a href="#" class="card-link">Back to Previous Page</a>
+                        <a href="/logout" class="card-link">Logout</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
