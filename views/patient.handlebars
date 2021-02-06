@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="jumbotron">
+        <h2>Patient Record</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" id="
+                    patient-name"> </h5>
+                    <p data-id="" class="patient-name"></p>
+                    <a href="/logout" class="card-link">Logout</a>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Medication List</h5>
+                        <a href="#" class="card-link" id="addPatient">Add Medication</a>
+                        <input type="text" id="medName" placeholder="Medicine Name">
+                    </div>
+                    <ul class="list-group list-group-flush medsList">
+                        {{!-- for each item in patient. Added an s--}}
+                        {{#each meds}}
+                        {{!-- display their information. Added folder for HB --}}
+                        {{> patients/medsBlock}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
