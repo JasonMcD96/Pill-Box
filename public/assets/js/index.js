@@ -100,6 +100,7 @@ $(document).ready(function () {
 
     $("#addMedication").on('click', function(event){
         event.preventDefault();
+        // get the id thats at the end of the url
         let string = document.URL.split('/')
         let id = string[string.length-1]
         console.log('URL PARAMS :',id)
