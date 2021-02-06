@@ -38,14 +38,16 @@ module.exports = function (app) {
     })
 
     // GET route for patient record
-    app.get("/patientrecord", isAuthenticated, function(req, res) {
+    app.get("/patientrecord/:id", isAuthenticated, function(req, res) {
+        console.log("Passed ID: ", req.params.id)
         db.Patient.findOne({
             raw: true,
             where: {
-                id: req.body.id
+                id: req.params.id
             },
-            include: [db.Meds]
+            // include: [db.Meds]
         }).then(function (dbPatient) {
+            console.log("Inside then function: ")
             var meds = { meds: dbPatient }
             res.render("patient", meds)
         });
