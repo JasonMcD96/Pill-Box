@@ -8,7 +8,7 @@ $(document).ready(function () {
         console.log("You clicked add patient!")
 
         // get the new patient's name
-        let newName = $("#patientName").val();
+        let newName = $("#patientName").val().trim();
         let newPatient = {
             name: newName,
             // changed to UserId instead of caretaker, was not loading in db
