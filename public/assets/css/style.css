@@ -2,7 +2,7 @@
     text-decoration: underline;
 }
 
-.patientList {
+.patientList, .medsList {
     padding-left: 25px;
 }
 
