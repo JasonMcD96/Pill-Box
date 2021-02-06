@@ -25,3 +25,7 @@
 .jumbotron p {
 
 }
+
+label, p {
+    font-family: 'Raleway', sans-serif;
+}
