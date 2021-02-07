@@ -1,7 +1,8 @@
-
 $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
+    let withFood = 0;
+    let taken = 0;
 
     $("#addPatient").on("click", function (event) {
         event.preventDefault();
@@ -105,6 +106,53 @@ $(document).ready(function () {
         let id = string[string.length-1]
         console.log('URL PARAMS :',id)
 
-        window.location.href = '/addmedication:'+id
+        window.location.href = '/addmedication/'+id
     })
+
+    $("#with-food-form :checkbox").change(function() {
+        
+        if (this.checked) {
+            withFood = 1;
+        }
+        console.log(withFood)
+    })
+
+    $("#taken-form :checkbox").change(function() {
+        if (this.checked) {
+            taken = 1;
+        }
+    })
+
+    $("#submit-medication").on("click", function(event) {
+        event.preventDefault();
+
+        // get the id thats at the end of the url
+        let string = document.URL.split('/')
+        let id = string[string.length-1]
+        console.log('URL PARAMS :',id)
+
+        // Get all data from form
+        let medName = $("input#med_name");
+        let dosage = $("input#dosage");
+        let timesPd = $("select#timesPD");
+        let notes = $("textarea#notes");
+
+        let medData = {
+            med_name: medName.val().trim(),
+            dosage: dosage.val().trim(),
+            timesPD: timesPd.val(),
+            withFood: withFood,
+            taken: taken,
+            notes: notes.val().trim(),
+            PatientId: id
+        }
+
+        console.log(medData)
+        $.ajax("/api/medication", {
+            type: "POST",
+            data: medData
+        }).then(function(dbMed) {
+            window.location.href = '/patientrecord/' + dbMed.PatientId;
+        });
+    });
 });
