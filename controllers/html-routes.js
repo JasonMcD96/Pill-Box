@@ -46,6 +46,7 @@ module.exports = function (app) {
             },
         }).then(function (dbPatient) {
             var meds = { meds: dbPatient }
+            console.log(meds)
             res.render("patient", meds)
         });
     });
