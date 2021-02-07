@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         withFood: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         taken: {
