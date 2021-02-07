@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
-    let withFood = 0;
+    // let withFood = 0;
     let taken = 0;
 
     $("#addPatient").on("click", function (event) {
@@ -99,49 +99,50 @@ $(document).ready(function () {
         $(".member-name").attr('data-id', data.id)
     });
 
-    $("#addMedication").on('click', function(event){
+    $("#addMedication").on('click', function (event) {
         event.preventDefault();
         // get the id thats at the end of the url
         let string = document.URL.split('/')
-        let id = string[string.length-1]
-        console.log('URL PARAMS :',id)
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
 
-        window.location.href = '/addmedication/'+id
+        window.location.href = '/addmedication/' + id
     })
 
-    $("#with-food-form :checkbox").change(function() {
-        
-        if (this.checked) {
-            withFood = 1;
-        }
-        console.log(withFood)
-    })
+    // $("#with-food-form :checkbox").change(function() {
 
-    $("#taken-form :checkbox").change(function() {
-        if (this.checked) {
-            taken = 1;
-        }
-    })
+    //     if (this.checked) {
+    //         withFood = 1;
+    //     }
+    //     console.log(withFood)
+    // })
 
-    $("#submit-medication").on("click", function(event) {
+    // $("#taken-form :checkbox").change(function() {
+    //     if (this.checked) {
+    //         taken = 1;
+    //     }
+    // })
+
+    $("#submit-medication").on("click", function (event) {
         event.preventDefault();
 
         // get the id thats at the end of the url
         let string = document.URL.split('/')
-        let id = string[string.length-1]
-        console.log('URL PARAMS :',id)
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
 
         // Get all data from form
         let medName = $("input#med_name");
         let dosage = $("input#dosage");
         let timesPd = $("select#timesPD");
+        let withFood = $("select#withFood");
         let notes = $("textarea#notes");
 
         let medData = {
             med_name: medName.val().trim(),
             dosage: dosage.val().trim(),
             timesPD: timesPd.val(),
-            withFood: withFood,
+            withFood: withFood.val(),
             taken: taken,
             notes: notes.val().trim(),
             PatientId: id
@@ -151,7 +152,7 @@ $(document).ready(function () {
         $.ajax("/api/medication", {
             type: "POST",
             data: medData
-        }).then(function(dbMed) {
+        }).then(function (dbMed) {
             window.location.href = '/patientrecord/' + dbMed.PatientId;
         });
     });
