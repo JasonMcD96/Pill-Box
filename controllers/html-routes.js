@@ -51,14 +51,33 @@ module.exports = function (app) {
                 PatientId: req.params.id
             },
         }).then(function (dbPatient) {
-            var meds = { meds: dbPatient }
-            console.log(meds)
-            res.render("patient", meds)
+            db.Patient.findOne({
+                raw: true,
+                id: req.params.id,
+            }).then(function (patient) {
+                console.log(patient);
+                var meds = {
+                    meds: dbPatient,
+                    name: patient.name
+                }
+                console.log(meds)
+                res.render("patient", meds)
+            })
+
         });
     });
 
     // GET route to add medication
     app.get("/addmedication/:id", isAuthenticated, function (req, res) {
-        res.render("medicine");
+        db.Patient.findOne({
+            raw: true,
+            id: req.params.id,
+        }).then(function (patient) {
+            console.log(patient);
+            var patientName = {
+                name: patient.name
+            }
+            res.render("medicine", patientName)
+        })
     })
 };
