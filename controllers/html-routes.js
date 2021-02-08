@@ -29,7 +29,9 @@ module.exports = function (app) {
 
     // Add isAuthenticated middleware
     app.get("/dashboard", isAuthenticated, function (req, res) {
-        db.Patient.findAll({ raw: true }).then(function (dbPatients) {
+        db.Patient.findAll({
+            raw: true,
+        }).then(function (dbPatients) {
 
             // converting patients to an object for handlebars
             var patients = { patients: dbPatients }
@@ -38,7 +40,7 @@ module.exports = function (app) {
     })
 
     // GET route for patient record
-    app.get("/patientrecord/:id", isAuthenticated, function(req, res) {
+    app.get("/patientrecord/:id", isAuthenticated, function (req, res) {
         db.Meds.findAll({
             raw: true,
             where: {
@@ -52,7 +54,7 @@ module.exports = function (app) {
     });
 
     // GET route to add medication
-    app.get("/addmedication/:id", isAuthenticated, function(req, res) {
+    app.get("/addmedication/:id", isAuthenticated, function (req, res) {
         res.render("medicine");
     })
 };

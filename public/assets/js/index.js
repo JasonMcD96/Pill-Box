@@ -62,8 +62,7 @@ $(document).ready(function () {
         }).then(
             function () {
                 console.log("created user");
-                // Reload the page to get the updated list
-                location.reload();
+                window.location.href = "/dashboard"
             }
         );
     })
