@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbotron">
-        <h2 id="patient-name"></h2>
+        <h2 id="patient-name">{{name}}</h2>
     </div>
 
     <div class="row">
@@ -27,27 +27,35 @@
                                 <option>5</option>
                             </select>
                         </div>
-                        <div class="form-check">
+                        {{!-- <div class="form-check" id="with-food-form">
                             <input class="form-check-input" type="checkbox" value="" id="withFood">
                             <label class="form-check-label" for="defaultCheck1">
                                 With Food
                             </label>
+                        </div> --}}
+                        <div class="form-group" id="with-food-form">
+                            <label for="exampleFormControlSelect1">With Food:</label>
+                            <select class="form-control" id="withFood">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
                         </div>
-                        <div class="form-check">
+                        {{!-- <div class="form-check" id="taken-form">
                             <input class="form-check-input" type="checkbox" value="" id="taken">
                             <label class="form-check-label" for="defaultCheck1">
                                 Taken
                             </label>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Notes:</label>
                             <textarea class="form-control" id="notes" rows="3"></textarea>
                         </div>
+                        <button type="button" class="btn btn-primary" id="submit-medication">Submit</button>
                     </form>
 
                     <div class="card-body">
-                        <a href="#" class="card-link">Back to Previous Page</a>
+                        <a href="#" id="back-to-prev-page" class="card-link">Back to Previous Page</a>
                         <a href="/logout" class="card-link">Logout</a>
                     </div>
                 </div>

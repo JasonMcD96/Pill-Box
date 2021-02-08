@@ -29,7 +29,13 @@ module.exports = function (app) {
 
     // Add isAuthenticated middleware
     app.get("/dashboard", isAuthenticated, function (req, res) {
-        db.Patient.findAll({ raw: true }).then(function (dbPatients) {
+        console.log(req.user);
+        db.Patient.findAll({
+            raw: true,
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbPatients) {
 
             // converting patients to an object for handlebars
             var patients = { patients: dbPatients }
@@ -38,18 +44,40 @@ module.exports = function (app) {
     })
 
     // GET route for patient record
-    app.get("/patientrecord/:id", isAuthenticated, function(req, res) {
-        console.log("Passed ID: ", req.params.id)
-        db.Patient.findOne({
+    app.get("/patientrecord/:id", isAuthenticated, function (req, res) {
+        db.Meds.findAll({
             raw: true,
             where: {
-                id: req.params.id
+                PatientId: req.params.id
             },
-            // include: [db.Meds]
         }).then(function (dbPatient) {
-            console.log("Inside then function: ")
-            var meds = { meds: dbPatient }
-            res.render("patient", meds)
+            db.Patient.findOne({
+                raw: true,
+                id: req.params.id,
+            }).then(function (patient) {
+                console.log(patient);
+                var meds = {
+                    meds: dbPatient,
+                    name: patient.name
+                }
+                console.log(meds)
+                res.render("patient", meds)
+            })
+
         });
     });
+
+    // GET route to add medication
+    app.get("/addmedication/:id", isAuthenticated, function (req, res) {
+        db.Patient.findOne({
+            raw: true,
+            id: req.params.id,
+        }).then(function (patient) {
+            console.log(patient);
+            var patientName = {
+                name: patient.name
+            }
+            res.render("medicine", patientName)
+        })
+    })
 };

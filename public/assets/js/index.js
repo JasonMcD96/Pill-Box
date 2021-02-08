@@ -1,33 +1,9 @@
-
 $(document).ready(function () {
     var currentDay = $("#currentDay");
     currentDay.text(moment().format('dddd, LL'));
+    // let withFood = 0;
+    let taken = 0;
 
-    $("#addPatient").on("click", function (event) {
-        event.preventDefault();
-        console.log("You clicked add patient!")
-
-        // get the new patient's name
-        let newName = $("#patientName").val().trim();
-        let newPatient = {
-            name: newName,
-            // changed to UserId instead of caretaker, was not loading in db
-            UserId: $(".member-name").data("id")
-        }
-
-        console.log("New Patient Info:", newPatient)
-        $.ajax("/api/patient", {
-            type: "POST",
-            data: newPatient
-        }).then(
-            function () {
-                console.log("created patient");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-
-    })
 
     $("#loginSubmit").on("click", function (event) {
         event.preventDefault();
@@ -86,25 +62,134 @@ $(document).ready(function () {
         }).then(
             function () {
                 console.log("created user");
+                window.location.href = "/dashboard"
+            }
+        );
+    })
+    $.get()
+
+
+    // GET request to get user's email
+    $.get("/api/user_data").then(function (data) {
+        $(".member-name").text(data.email);
+        $(".member-name").attr('data-id', data.id);
+        $("#lastLogin").text(moment(data.updatedAt).format('dddd, LL'));
+        $("#lastLogin").attr('data-id', data.id);
+    });
+
+
+
+    $("#addPatient").on("click", function (event) {
+        event.preventDefault();
+        console.log("You clicked add patient!")
+
+        // get the new patient's name
+        let newName = $("#patientName").val().trim();
+        let newPatient = {
+            name: newName,
+            // changed to UserId instead of caretaker, was not loading in db
+            UserId: $(".member-name").data("id")
+        }
+
+        console.log("New Patient Info:", newPatient)
+        $.ajax("/api/patient", {
+            type: "POST",
+            data: newPatient
+        }).then(
+            function () {
+                console.log("created patient");
                 // Reload the page to get the updated list
                 location.reload();
             }
         );
     })
+    $.get()
 
-    // GET request to get user's email
-    $.get("/api/user_data").then(function (data) {
-        $(".member-name").text(data.email);
-        $(".member-name").attr('data-id', data.id)
-    });
+    // $.get("/api/patient_data").then(function (data) {
+    //     $(".patientName").text(data.name);
+    //     $(".patientName").attr('data-id', data.id);
+    // });
 
-    $("#addMedication").on('click', function(event){
+    $("#addMedication").on('click', function (event) {
         event.preventDefault();
         // get the id thats at the end of the url
         let string = document.URL.split('/')
-        let id = string[string.length-1]
-        console.log('URL PARAMS :',id)
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
 
-        window.location.href = '/addmedication:'+id
+        window.location.href = '/addmedication/' + id
     })
+
+    // $("#with-food-form :checkbox").change(function() {
+
+    //     if (this.checked) {
+    //         withFood = 1;
+    //     }
+    //     console.log(withFood)
+    // })
+
+    // $("#taken-form :checkbox").change(function() {
+    //     if (this.checked) {
+    //         taken = 1;
+    //     }
+    // })
+
+    $("#submit-medication").on("click", function (event) {
+        event.preventDefault();
+
+        // get the id thats at the end of the url
+        let string = document.URL.split('/')
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
+
+        // Get all data from form
+        let medName = $("input#med_name");
+        let dosage = $("input#dosage");
+        let timesPd = $("select#timesPD");
+        let withFood = $("select#withFood");
+        let notes = $("textarea#notes");
+
+        let medData = {
+            med_name: medName.val().trim(),
+            dosage: dosage.val().trim(),
+            timesPD: timesPd.val(),
+            withFood: withFood.val(),
+            taken: taken,
+            notes: notes.val().trim(),
+            PatientId: id
+        }
+
+        $.ajax("/api/medication", {
+            type: "POST",
+            data: medData
+        }).then(function (dbMed) {
+            window.location.href = '/patientrecord/' + dbMed.PatientId;
+        });
+    });
+
+    $("#back-to-prev-page").on("click", function (event) {
+        event.preventDefault();
+
+        // get the id thats at the end of the url
+        let string = document.URL.split('/')
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
+
+        window.location.href = '/patientrecord/' + id
+    })
+
+    // $(".patient").on("click", function (event) {
+    //     event.preventDefault();
+    //     let id = $(".patient").data("id")
+
+    //     $.ajax("/api/patientrecord/" + id, {
+    //         type: "GET"
+
+    //     }).then(function () {
+    //         console.log("finished query")
+
+    //     });
+    // })
+
 });
+
