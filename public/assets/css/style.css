@@ -47,3 +47,7 @@ label, p {
 .login-form {
     padding-left: 30px;
 }
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}

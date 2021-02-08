@@ -148,7 +148,6 @@ $(document).ready(function () {
             PatientId: id
         }
 
-        console.log(medData)
         $.ajax("/api/medication", {
             type: "POST",
             data: medData
@@ -156,4 +155,15 @@ $(document).ready(function () {
             window.location.href = '/patientrecord/' + dbMed.PatientId;
         });
     });
+
+    $("#back-to-prev-page").on("click", function (event) {
+        event.preventDefault();
+
+        // get the id thats at the end of the url
+        let string = document.URL.split('/')
+        let id = string[string.length - 1]
+        console.log('URL PARAMS :', id)
+
+        window.location.href = '/patientrecord/' + id
+    })
 });
