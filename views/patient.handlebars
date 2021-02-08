@@ -23,13 +23,24 @@
                     <h5 class="card-title">Medication List</h5>
 
                 </div>
-                <ul class="list-group list-group-flush medsList">
-                    {{!-- for each item in patient --}}
-                    {{#each meds}}
-                    {{!-- display their information --}}
-                    {{> patients/medsBlock}}
-                    {{/each}}
-                </ul>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Dosage</th>
+                            <th scope="col">Times Per Day</th>
+                            <th scope="col">With Food</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{!-- for each item in patient --}}
+                        {{#each meds}}
+                        {{!-- display their information --}}
+                        {{> patients/medsBlock}}
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
