@@ -4,31 +4,6 @@ $(document).ready(function () {
     // let withFood = 0;
     let taken = 0;
 
-    $("#addPatient").on("click", function (event) {
-        event.preventDefault();
-        console.log("You clicked add patient!")
-
-        // get the new patient's name
-        let newName = $("#patientName").val().trim();
-        let newPatient = {
-            name: newName,
-            // changed to UserId instead of caretaker, was not loading in db
-            UserId: $(".member-name").data("id")
-        }
-
-        console.log("New Patient Info:", newPatient)
-        $.ajax("/api/patient", {
-            type: "POST",
-            data: newPatient
-        }).then(
-            function () {
-                console.log("created patient");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-
-    })
 
     $("#loginSubmit").on("click", function (event) {
         event.preventDefault();
@@ -92,12 +67,49 @@ $(document).ready(function () {
             }
         );
     })
+    $.get()
+
 
     // GET request to get user's email
     $.get("/api/user_data").then(function (data) {
         $(".member-name").text(data.email);
-        $(".member-name").attr('data-id', data.id)
+        $(".member-name").attr('data-id', data.id);
+        $("#lastLogin").text(moment(data.updatedAt).format('dddd, LL'));
+        $("#lastLogin").attr('data-id', data.id);
     });
+
+
+
+    $("#addPatient").on("click", function (event) {
+        event.preventDefault();
+        console.log("You clicked add patient!")
+
+        // get the new patient's name
+        let newName = $("#patientName").val().trim();
+        let newPatient = {
+            name: newName,
+            // changed to UserId instead of caretaker, was not loading in db
+            UserId: $(".member-name").data("id")
+        }
+
+        console.log("New Patient Info:", newPatient)
+        $.ajax("/api/patient", {
+            type: "POST",
+            data: newPatient
+        }).then(
+            function () {
+                console.log("created patient");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    })
+    $.get()
+
+    // $.get("/api/patient_data").then(function (data) {
+    //     $(".patientName").text(data.name);
+    //     $(".patientName").attr('data-id', data.id);
+    // });
 
     $("#addMedication").on('click', function (event) {
         event.preventDefault();
@@ -166,4 +178,19 @@ $(document).ready(function () {
 
         window.location.href = '/patientrecord/' + id
     })
+
+    // $(".patient").on("click", function (event) {
+    //     event.preventDefault();
+    //     let id = $(".patient").data("id")
+
+    //     $.ajax("/api/patientrecord/" + id, {
+    //         type: "GET"
+
+    //     }).then(function () {
+    //         console.log("finished query")
+
+    //     });
+    // })
+
 });
+

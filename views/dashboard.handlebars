@@ -19,7 +19,7 @@
                     <h5 class="card-title">Welcome: </h5>
                     <p data-id="" class="member-name"></p>
 
-                    <p class="text-muted">Last Login Date: <span id="lastLogin"></span></p>
+                    <p class="text-muted">Last Login Date: <span data-id="" id="lastLogin"></span></p>
                     <a href="/logout" class="card-link">Logout</a>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                                 </n>
                                 <span id="currentDay"></span>
                             </h5>
-
+                            <p class="text-muted"><span id="patientCount"></span># Patients to see Today</p>
 
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <p>Notifications:</p> &nbsp;
@@ -44,8 +44,8 @@
                                     <input type="radio" name="options" id="option3" autocomplete="off"> OFF
                                 </label>
                             </div>
-                            </n>
-                            <p class="text-muted"># Patients to see Today</p>
+
+
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Patient List</h5>
-                    <a href="#" class="card-link" id="addPatient">Add a Patient</a>
                     <input type="text" id="patientName" placeholder="Patient Name">
+                    <a href="#" class="card-link" id="addPatient">Add Patient</a>
                 </div>
                 <ul class="list-group list-group-flush patientList">
                     {{!-- for each item in patient. Added an s--}}
