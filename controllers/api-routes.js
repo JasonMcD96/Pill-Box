@@ -68,7 +68,8 @@ module.exports = function (app) {
             // Otherwise send back the user's email
             res.json({
                 email: req.user.email,
-                id: req.user.id
+                id: req.user.id,
+                updatedAt: req.user.updatedAt
             });
         }
     });
