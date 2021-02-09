@@ -53,7 +53,9 @@ module.exports = function (app) {
         }).then(function (dbPatient) {
             db.Patient.findOne({
                 raw: true,
-                id: req.params.id,
+                where: {
+                    id: req.params.id,
+                },
             }).then(function (patient) {
                 console.log(patient);
                 var meds = {
@@ -63,7 +65,6 @@ module.exports = function (app) {
                 console.log(meds)
                 res.render("patient", meds)
             })
-
         });
     });
 
@@ -71,7 +72,9 @@ module.exports = function (app) {
     app.get("/addmedication/:id", isAuthenticated, function (req, res) {
         db.Patient.findOne({
             raw: true,
-            id: req.params.id,
+            where: {
+                id: req.params.id,
+            },
         }).then(function (patient) {
             console.log(patient);
             var patientName = {
